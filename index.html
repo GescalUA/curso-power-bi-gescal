@@ -1140,13 +1140,19 @@ function submitForm() {
     curso: 'Power BI para la Gestión de la Calidad'
   });
 
-  fetch(cohorte_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
-    .then(() => showSuccess())
-    .catch(() => showSuccess()); // no-cors always resolves
-
-  // Fallback timeout
-  setTimeout(showSuccess, 5000);
-}
+  fetch(SCRIPT_URL + '?' + params.toString(), {
+    method: 'GET',
+    mode: 'no-cors'
+})
+.then(() => {
+    showSuccess();
+})
+.catch(error => {
+    console.error(error);
+    alert("Ocurrió un error al enviar la información.");
+    btn.classList.remove("loading");
+    btn.innerHTML = "Inscribirme gratis";
+});
 
 function showSuccess() {
   document.getElementById('form-body').style.display = 'none';
