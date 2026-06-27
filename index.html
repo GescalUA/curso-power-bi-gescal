@@ -998,29 +998,6 @@ footer {
             <label class="form-label" for="celular">Celular *</label>
             <input type="tel" id="celular" name="celular" class="form-control" placeholder="300 000 0000" required>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="cohorte">Cohorte *</label>
-            <select id="cohorte" name="cohorte" class="form-control" required>
-              <option value="" disabled selected>Selecciona</option>
-              <option value="25">Cohorte 25</option>
-              <option value="26">Cohorte 26</option>
-              <option value="27">Cohorte 27</option>
-              <option value="28">Cohorte 28</option>
-              <option value="29">Cohorte 29</option>
-              <option value="30">Cohorte 30</option>
-              <option value="31">Cohorte 31</option>
-              <option value="32">Cohorte 32</option>
-              <option value="33">Cohorte 33</option>
-              <option value="34">Cohorte 34</option>
-              <option value="35">Cohorte 35</option>
-              <option value="36">Cohorte 36</option>
-              <option value="37">Cohorte 37</option>
-              <option value="38">Cohorte 38</option>
-              <option value="39">Cohorte 39</option>
-              <option value="40">Cohorte 40</option>
-            </select>
-          </div>
-        </div>
         <div class="form-group">
           <label class="form-label" for="condicion">¿Eres estudiante activo o egresado? *</label>
           <select id="condicion" name="condicion" class="form-control" required>
@@ -1116,10 +1093,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // ===== FORM SUBMIT =====
 // IMPORTANT: Replace SCRIPT_URL with your deployed Google Apps Script Web App URL
-const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwj2m__TWFSxSatZgVNkImo0UjoM560flP6SPDcS-GkysYnlQpuxlO1AvTJKbmESN2dYA/exec';
 
 function submitForm() {
-  const fields = ['nombre', 'correo', 'celular', 'cohorte', 'condicion'];
+  const fields = ['nombre', 'correo', 'celular', 'condicion'];
   const values = {};
   let valid = true;
 
@@ -1159,12 +1136,11 @@ function submitForm() {
     nombre: values.nombre,
     correo: values.correo,
     celular: values.celular,
-    cohorte: values.cohorte,
     condicion: values.condicion,
     curso: 'Power BI para la Gestión de la Calidad'
   });
 
-  fetch(SCRIPT_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
+  fetch(cohorte_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
     .then(() => showSuccess())
     .catch(() => showSuccess()); // no-cors always resolves
 
